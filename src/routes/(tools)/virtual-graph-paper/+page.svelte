@@ -90,8 +90,9 @@
 		ctx.beginPath();
 		ctx.arc(startX, startY, radius, 0, 2 * Math.PI);
 	  } else if (tool === 'curve') {
-		controlX = (startX + endX) / 2;
-		controlY = startY - 50;
+		controlX = (startX + endX) / 2 + (startY - endY) / 2;
+		controlY = (startY + endY) / 2 + (endX - startX) / 2;
+  
 		ctx.beginPath();
 		ctx.moveTo(startX, startY);
 		ctx.quadraticCurveTo(controlX, controlY, endX, endY);
@@ -145,7 +146,7 @@
 	}
 </script>
 
-<div class="relative bg-white border rounded-lg overflow-hidden" style="width: 100%; height: 550px;">
+<div class="relative bg-white border rounded-lg overflow-hidden" style="width: 100%; height: 600px;">
 	<div class="absolute top-0 left-0 z-10 p-2">
 	  <select on:change={(e) => selectTool(e.target.value)} class="px-4 py-2 bg-grey text-5B6669 rounded hover:bg-grey-700 m-1">
 		<option value="null">Tools</option>
