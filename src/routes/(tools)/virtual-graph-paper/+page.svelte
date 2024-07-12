@@ -60,13 +60,6 @@
             ctx.lineTo(x, y);
             ctx.stroke();
         } else if (currentTool === "rectangle") {
-            // ctx.strokeRect(startX, startY, x - startX, y - startY);
-            // if (fill) {
-            //     ctx.fillRect(startX, startY, x - startX, y - startY);
-            // }
-            // ctx.beginPath();
-            // ctx.rect(startX, startY, x - startX, y - startY);
-            // ctx.stroke();
             ctx.beginPath();
             if (roundCorners) {
                 const width = x - startX;
@@ -86,28 +79,11 @@
                 ctx.fill();
             }
         } else if (currentTool === "circle") {
-            // ctx.beginPath();
-            // const radius = Math.sqrt(
-            //     Math.pow(x - startX, 2) + Math.pow(y - startY, 2),
-            // );
-            // ctx.arc(startX, startY, radius, 0, Math.PI * 2);
-            // if (fill) {
-            //     ctx.fill();
-            // }
-            // ctx.stroke();
             ctx.beginPath();
             const radius = Math.sqrt(Math.pow(x - startX, 2) + Math.pow(y - startY, 2));
             ctx.arc(startX, startY, radius, 0, Math.PI * 2);
             ctx.stroke();
         } else if (currentTool === "curve") {
-            // controlPoint = { x, y };
-            // ctx.beginPath();
-            // ctx.moveTo(startX, startY);
-            // ctx.quadraticCurveTo(controlPoint.x, controlPoint.y, x, y);
-            // if (fill) {
-            //     ctx.fill();
-            // }
-            // ctx.stroke();
             ctx.beginPath();
             ctx.moveTo(startX, startY);
             ctx.quadraticCurveTo(controlPoint.x, controlPoint.y, x, y);
@@ -141,17 +117,6 @@
                     currentFreehandPoints[i + 1].y,
                 );
             }
-            // if (
-            //     fill &&
-            //     isShapeClosed({
-            //         tool: "freehand",
-            //         points: currentFreehandPoints,
-            //     })
-            // ) {
-            //     ctx.fill();
-            // } else {
-            //     ctx.stroke();
-            // }
             ctx.stroke();
         }
         if (showGrid) {
@@ -263,32 +228,6 @@
                 ctx.moveTo(action.startX, action.startY);
                 ctx.lineTo(action.endX, action.endY);
             } else if (action.tool === "rectangle") {
-                // ctx.strokeRect(
-                //     action.startX,
-                //     action.startY,
-                //     action.endX - action.startX,
-                //     action.endY - action.startY,
-                // );
-                // if (fill && isShapeClosed(action)) {
-                //     ctx.fillRect(
-                //         action.startX,
-                //         action.startY,
-                //         action.endX - action.startX,
-                //         action.endY - action.startY,
-                //     );
-                // } else {
-                //     ctx.strokeRect(
-                //         action.startX,
-                //         action.startY,
-                //         action.endX - action.startX,
-                //         action.endY - action.startY,
-                //     );
-                // }
-                // ctx.rect(action.startX, action.startY, action.endX - action.startX, action.endY - action.startY);
-                // ctx.stroke();
-                // if (action.fill) {
-                //     ctx.fill();
-                // }
                 ctx.beginPath();
                 if (action.roundCorners) {
                     const width = action.endX - action.startX;
@@ -313,11 +252,6 @@
                         Math.pow(action.endY - action.startY, 2),
                 );
                 ctx.arc(action.startX, action.startY, radius, 0, Math.PI * 2);
-                // if (fill && isShapeClosed(action)) {
-                //     ctx.fill();
-                // } else {
-                //     ctx.stroke();
-                // }
                 if (action.fill) {
                     ctx.fill();
                 }
@@ -329,11 +263,6 @@
                     action.endX,
                     action.endY,
                 );
-                // if (fill && isShapeClosed(action)) {
-                //     ctx.fill();
-                // } else {
-                //     ctx.stroke();
-                // }
                 if (action.fill) {
                     ctx.fill();
                 }
@@ -360,11 +289,6 @@
                     ctx.moveTo(action.points[i].x, action.points[i].y);
                     ctx.lineTo(action.points[i + 1].x, action.points[i + 1].y);
                 }
-                // if (fill && isShapeClosed(action)) {
-                //     ctx.fill();
-                // } else {
-                //     ctx.stroke();
-                // }
                 ctx.stroke();
             } else if (action.tool === "text") {
                 ctx.font = `${action.lineWidth * 10}px Arial`;
@@ -413,9 +337,6 @@
     onMount(() => {
         ctx = document.getElementById("canvas").getContext("2d");
         redrawCanvas();
-        // canvas.addEventListener("mousedown", startDrawing);
-        // canvas.addEventListener("mousemove", draw);
-        // canvas.addEventListener("mouseup", stopDrawing);
     });
 
     function drawGrid(ctx) {
@@ -560,7 +481,7 @@
             redrawCanvas();
         }
     }
-    
+
 
     function shareCanvas() {
         if (navigator.share) {
@@ -597,27 +518,6 @@
         roundCorners = event.target.checked;
     }
 
-    // function drawGrid() {
-    //     ctx.strokeStyle = "#ccc";
-    //     ctx.lineWidth = 0.5;
-    //     const gridSize = 50;
-
-    //     // Vertical grid lines
-    //     for (let i = gridSize; i < ctx.canvas.width; i += gridSize) {
-    //         ctx.beginPath();
-    //         ctx.moveTo(i, 0);
-    //         ctx.lineTo(i, ctx.canvas.height);
-    //         ctx.stroke();
-    //     }
-
-    //     // Horizontal grid lines
-    //     for (let i = gridSize; i < ctx.canvas.height; i += gridSize) {
-    //         ctx.beginPath();
-    //         ctx.moveTo(0, i);
-    //         ctx.lineTo(ctx.canvas.width, i);
-    //         ctx.stroke();
-    //     }
-    // }
 
     function toggleGrid() {
         showGrid = !showGrid;
