@@ -552,23 +552,23 @@
                 >
             </div>
             <div>
-                <label
-                    >Color: <input type="color" bind:value={fillColor} /></label
-                >
+                <label>
+                    Color: <input type="color" bind:value={fillColor} />
+                </label>
             </div>
             <div>
-                <label
-                    >Fill: <input type="checkbox" bind:checked={fill} /></label
-                >
                 <label>
-                    <input type="checkbox" on:change="{handleDashedStrokeToggle}" /> Dashed Stroke
+                    Fill <input type="checkbox" bind:checked={fill} />
                 </label>
                 <label>
+                    Dashed Stroke <input type="checkbox" on:change="{handleDashedStrokeToggle}" /> 
+                </label>
+                <!-- <label>
                     <input type="checkbox" id="round-corners-checkbox" checked={roundCorners} onchange={handleRoundCornersCheckbox} />
                     Round Corners
-                </label>
+                </label> -->
             </div>
-            <div>
+            <!-- <div>
                 <div>
                     <label>
                         <input type="checkbox" bind:checked={showGrid} on:change={toggleGrid} />
@@ -582,7 +582,7 @@
                         Show Rulers
                     </label>
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <canvas
