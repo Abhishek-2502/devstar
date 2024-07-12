@@ -531,6 +531,36 @@
 </script>
 
 <div class="app">
+    <div class="toolbar1">
+        <button
+            on:click={() => (currentTool = "line")}
+            class:active={currentTool === "line"}>Line</button
+        >
+        <button
+            on:click={() => (currentTool = "rectangle")}
+            class:active={currentTool === "rectangle"}>Rectangle</button
+        >
+        <button
+            on:click={() => (currentTool = "circle")}
+            class:active={currentTool === "circle"}>Circle</button
+        >
+        <button
+            on:click={() => (currentTool = "curve")}
+            class:active={currentTool === "curve"}>Curve</button
+        >
+        <button
+            on:click={() => (currentTool = "arrow")}
+            class:active={currentTool === "arrow"}>Arrow</button
+        >
+        <button
+            on:click={() => (currentTool = "freehand")}
+            class:active={currentTool === "freehand"}>Freehand</button
+        >
+        <button
+            on:click={() => (currentTool = "text")}
+            class:active={currentTool === "text"}>Text</button
+        >
+    </div>
     <div class="drawing-container">
         <div class="controls">
             <div>
@@ -604,36 +634,7 @@
         <button on:click={zoomIn}>Zoom In</button>
         <button on:click={zoomOut}>Zoom Out</button>
     </div>
-    <div class="toolbar1">
-        <button
-            on:click={() => (currentTool = "line")}
-            class:active={currentTool === "line"}>Line</button
-        >
-        <button
-            on:click={() => (currentTool = "rectangle")}
-            class:active={currentTool === "rectangle"}>Rectangle</button
-        >
-        <button
-            on:click={() => (currentTool = "circle")}
-            class:active={currentTool === "circle"}>Circle</button
-        >
-        <button
-            on:click={() => (currentTool = "curve")}
-            class:active={currentTool === "curve"}>Curve</button
-        >
-        <button
-            on:click={() => (currentTool = "arrow")}
-            class:active={currentTool === "arrow"}>Arrow</button
-        >
-        <button
-            on:click={() => (currentTool = "freehand")}
-            class:active={currentTool === "freehand"}>Freehand</button
-        >
-        <button
-            on:click={() => (currentTool = "text")}
-            class:active={currentTool === "text"}>Text</button
-        >
-    </div>
+   
 </div>
 
 <style>
@@ -678,20 +679,29 @@
         align-items: flex-start;
     }
 
-    .toolbar,
+    .toolbar {
+        display: flex;
+        flex-direction: column;
+        background-color: var(--toolbar-color);
+        padding: 10px;
+        margin-left: 20px;
+        margin-top: 82px;
+    }
+    
     .toolbar1 {
         display: flex;
         flex-direction: column;
         background-color: var(--toolbar-color);
         padding: 10px;
-        border-left: 1px solid var(--border-color);
-        margin-left: 10px;
+        margin-left: -40px;
+        margin-right: 20px;
+        margin-top: 82px;
     }
 
     .toolbar button,
     .toolbar1 button {
         margin: 5px 0;
-        padding: 10px;
+        padding: 15px;
         border: 1px solid var(--border-color);
         background-color: var(--button-color);
         cursor: pointer;
