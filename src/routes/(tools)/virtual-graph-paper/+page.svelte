@@ -514,11 +514,10 @@
     function handleDashedStrokeToggle(event) {
         dashedStroke = event.target.checked;
     }
+    /*
     function handleRoundCornersCheckbox(event) {
         roundCorners = event.target.checked;
     }
-
-
     function toggleGrid() {
         showGrid = !showGrid;
         redrawCanvas();
@@ -528,6 +527,7 @@
         showRulers = !showRulers;
         redrawCanvas();
     }
+    */
 </script>
 
 <div class="app">
